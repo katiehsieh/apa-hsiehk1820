@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Katie Hsieh
+//Date - 2-27-19
 
 import java.util.ArrayList;
 import java.util.List;
