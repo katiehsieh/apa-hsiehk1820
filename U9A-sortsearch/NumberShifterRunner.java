@@ -10,15 +10,12 @@ import static java.lang.System.*;
 
 public class NumberShifterRunner
 {
-	public static void main( String args[] ) throws IOException
-	{
-	  int[] test = NumberShifter.makeLucky7Array(20);
-	  System.out.println(Arrays.toString(test));
+  public static void main( String args[] ) throws IOException
+  {
+    int[] test = NumberShifter.makeLucky7Array(20);
+	System.out.println(Arrays.toString(test));
 	  
-	  NumberShifter.shiftEm(test);
-	  System.out.println(Arrays.toString(test));
-	}
+	NumberShifter.shiftEm(test);
+	System.out.println(Arrays.toString(test));
+  }
 }
-
-
-
