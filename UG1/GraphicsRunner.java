@@ -1,10 +1,10 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Katie Hsieh
+//Date - 2-28-19
+//Class - 4
+//Lab  - UG1
 
 import javax.swing.JFrame;
 
