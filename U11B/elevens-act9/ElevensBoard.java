@@ -78,7 +78,6 @@ public class ElevensBoard extends Board {
 	  List<Integer> selectedCards = new ArrayList<Integer>();
 	  selectedCards.add(0);
 	  selectedCards.add(0);
-	  selectedCards.add(0);
 	  
 	  for (int a = 0; a < selected.size() - 1; a++) {
 	    selectedCards.set(0, selected.get(a));
