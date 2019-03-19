@@ -74,7 +74,7 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-	  List<Integer> selected = super.cardIndexes();
+	  List<Integer> selected = cardIndexes();
 	  List<Integer> selectedCards = new ArrayList<Integer>();
 	  selectedCards.add(0);
 	  selectedCards.add(0);
