@@ -99,12 +99,12 @@ public class ThirteensBoard extends Board {
     }
 
     /**
-     * Check for an 11-pair in the selected cards.
+     * Check for an 13-pair in the selected cards.
      * @param selectedCards selects a subset of this board.  It is list
      *                      of indexes into this board that are searched
-     *                      to find an 11-pair.
+     *                      to find an 13-pair.
      * @return true if the board entries in selectedCards
-     *              contain an 11-pair; false otherwise.
+     *              contain an 13-pair; false otherwise.
      */
     private boolean containsPairSum13(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 10 *** */
@@ -114,12 +114,12 @@ public class ThirteensBoard extends Board {
     }
 
     /**
-     * Check for a JQK in the selected cards.
+     * Check for a K in the selected cards.
      * @param selectedCards selects a subset of this board.  It is list
      *                      of indexes into this board that are searched
-     *                      to find a JQK group.
+     *                      to find a K group.
      * @return true if the board entries in selectedCards
-     *              include a jack, a queen, and a king; false otherwise.
+     *              include king; false otherwise.
      */
     private boolean containsK(List<Integer> selectedCards) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 10 *** */
