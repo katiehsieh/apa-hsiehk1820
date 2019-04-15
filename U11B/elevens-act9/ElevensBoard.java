@@ -54,6 +54,13 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+	  if (selectedCards.size() == 2) {
+	    return containsPairSum11(selectedCards);
+	  }
+	  else if (selectedCards.size() == 3) {
+	    return containsJQK(selectedCards);
+	  }
+	  return false;
 	}
 
 	/**
@@ -67,6 +74,28 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+	  List<Integer> selected = cardIndexes();
+	  List<Integer> selectedCards = new ArrayList<Integer>();
+	  selectedCards.add(0);
+	  selectedCards.add(0);
+	  
+	  for (int a = 0; a < selected.size() - 1; a++) {
+	    selectedCards.set(0, selected.get(a));
+	    
+	    for (int b = a + 1; b < selected.size(); b++) {
+	      selectedCards.set(1, selected.get(b));
+	      
+	      if (containsPairSum11(selectedCards)) {
+	          return true;
+	      }
+	    }
+	  }
+	  
+	  if (containsJQK(selected)) {
+	    return true;
+	  }
+	  
+	  return false;
 	}
 
 	/**
@@ -79,6 +108,9 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+	  int a = selectedCards.get(0);
+	  int b = selectedCards.get(1);
+	  return cardAt(a).pointValue() + cardAt(b).pointValue() == 11;
 	}
 
 	/**
@@ -91,5 +123,20 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+      List<String> faces = new ArrayList<String>();
+      faces.add("jack");
+      faces.add("queen");
+      faces.add("king");
+      
+      for (int item : selectedCards) {
+        for (int i = 0; i < faces.size(); i++) {
+          if (cardAt(item).rank().equals(faces.get(i))) {
+            faces.remove(faces.get(i));
+            break;
+          }
+        }
+      }
+      
+	  return faces.size() == 0;
 	}
 }
