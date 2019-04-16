@@ -18,9 +18,9 @@ public class Block implements Locatable
   {
     setX(0);
     setY(0);
-    setWidth(0);
-    setHeight(0);
-    setColor(null);
+    setWidth(10);
+    setHeight(10);
+    setColor(color.BLACK);
   }
 
   //add other Block constructors - x , y , width, height, color
@@ -37,6 +37,23 @@ public class Block implements Locatable
     setY(y);
     setWidth(w);
     setHeight(h);
+    setColor(Color.BLACK);
+  }
+  
+  public Block (int x, int y, Color col) {
+    setX(x);
+    setY(y);
+    setWidth(10);
+    setHeight(10);
+    setColor(col);
+  }
+  
+  public Block (int x, int y) {
+    setX(x);
+    setY(y);
+    setWidth(10);
+    setHeight(10);
+    setColor(Color.BLACK);
   }
   
   //add the other set methods
