@@ -20,7 +20,7 @@ public class Block implements Locatable
     setY(0);
     setWidth(10);
     setHeight(10);
-    setColor(color.BLACK);
+    setColor(Color.BLACK);
   }
 
   //add other Block constructors - x , y , width, height, color
