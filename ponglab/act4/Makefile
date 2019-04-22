@@ -10,7 +10,10 @@ CLASSES = \
 	Ball.java \
 	Paddle.java \
 	Pong.java \
-	TheGame.java
+	TheGame.java \
+	Collidable.java \
+	Score.java \
+	Wall.java
 
 default: classes
 
