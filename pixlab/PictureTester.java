@@ -87,6 +87,38 @@ public class PictureTester
     water.explore();
   }
   
+  /** Method to test mirrorVerticalRightToLeft */
+  public static void testMirrorVerticalRightToLeft() {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorVerticalRightToLeft();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirrorHorizontal */
+  public static void testMirrorHorizontal() {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontal();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirrorHorizontalBotToTop */
+  public static void testMirrorHorizontalBotToTop() {
+    Picture caterpillar = new Picture("caterpillar.jpg");
+    caterpillar.explore();
+    caterpillar.mirrorHorizontalBotToTop();
+    caterpillar.explore();
+  }
+  
+  /** Method to test mirrorDiagonal */
+  public static void testMirrorDiagonal() {
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.mirrorDiagonal();
+    beach.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -99,13 +131,13 @@ public class PictureTester
     // testKeepOnlyRed();
     // testKeepOnlyGreen();
     //testNegate();
-    testGrayscale();
+    //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
     // testMirrorArms();
     // testMirrorGull();
-    // testMirrorDiagonal();
+    testMirrorDiagonal();
     //testCollage();
     // testCopy();
     //testEdgeDetection();
@@ -116,5 +148,8 @@ public class PictureTester
     // testSetRedToHalfValueInTopHalf();
     // testClearBlueOverValue(200);
     // testGetAverageForColumn(0);
+    //testMirrorVerticalRightToLeft();
+    //testMirrorHorizontal();
+    //testMirrorHorizontalBotToTop();
   }
 }
