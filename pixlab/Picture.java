@@ -217,6 +217,73 @@ public class Picture extends SimplePicture
     }
   }
   
+  /** Method to keep only blue values */
+  public void keepOnlyBlue() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray: pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setRed(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+  
+  /** Method to negate all pixels */
+  public void negate() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray: pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setRed(255-pixelObj.getRed());
+        pixelObj.setGreen(255-pixelObj.getGreen());
+        pixelObj.setBlue(255-pixelObj.getBlue());
+      }
+    }
+  }
+  
+  /** Method to turn picture into shades of gray */
+  public void grayscale() {
+    grayscaleLumonisity();
+  }
+  
+  /** Method to make fish easier to see in water */
+  public void fixUnderwater() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray: pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setRed(pixelObj.getRed() + 75);
+        pixelObj.setGreen(pixelObj.getGreen() - 50);
+        pixelObj.setBlue(pixelObj.getBlue() - 50);
+      }
+    }
+  }
+  
+  /** Grayscale methods */
+  public void grayscaleAverage() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray: pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setGrayAverage();
+      }
+    }
+  }
+  
+  public void grayscaleLightness() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray: pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setGrayLightness();
+      }
+    }
+  }
+  
+  public void grayscaleLumonisity() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray: pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setGrayLuminosity();
+      }
+    }
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
