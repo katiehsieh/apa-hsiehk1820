@@ -119,6 +119,22 @@ public class PictureTester
     beach.explore();
   }
   
+  /** Method to test mirrorArms */
+  public static void testMirrorArms() {
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+  
+  /** Method to test mirrorGull */
+  public static void testMirrorGull() {
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.mirrorGull();
+    seagull.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -135,9 +151,9 @@ public class PictureTester
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
-    // testMirrorArms();
-    // testMirrorGull();
-    testMirrorDiagonal();
+    //testMirrorArms();
+    //testMirrorGull();
+    //testMirrorDiagonal();
     //testCollage();
     // testCopy();
     //testEdgeDetection();
