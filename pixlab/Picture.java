@@ -418,6 +418,67 @@ public class Picture extends SimplePicture
     }
   }
   
+  /** copy from the passed fromPic to the
+   * specified startRow and startCol in the
+   * current picture
+   * @param fromPic the picture to copy from
+   * @param startRow the start row to copy to
+   * @param startCol the start col to copy to
+   * @param endRow the end row to copy to
+   * @param endCol the end col to copy to
+   */
+   public void copy2(Picture fromPic, int startRowPos, int startColPos,
+                  int startRow, int startCol, int endRow, int endCol)
+   {
+     Pixel fromPixel = null;
+     Pixel toPixel = null;
+     Pixel[][] toPixels = this.getPixels2D();
+     Pixel[][] fromPixels = fromPic.getPixels2D();
+     for (int fromRow = startRow, toRow = startRowPos; 
+          fromRow < endRow &&
+          toRow < toPixels.length; 
+          fromRow++, toRow++)
+     {
+       for (int fromCol = startCol, toCol = startColPos; 
+            fromCol < endCol &&
+            toCol < toPixels[0].length;  
+            fromCol++, toCol++)
+       {
+         fromPixel = fromPixels[fromRow][fromCol];
+         toPixel = toPixels[toRow][toCol];
+         toPixel.setColor(fromPixel.getColor());
+       }
+     }
+   }
+   
+   /** Method to create a collage of several pictures */
+   public void myCollage()
+   {
+     Picture flower1 = new Picture("flower1.jpg");
+     flower1.zeroBlue();
+     Picture flower2 = new Picture("flower1.jpg");
+     flower2.mirrorDiagonal();
+     Picture flower3 = new Picture("flower1.jpg");
+     flower3.grayscale();
+     this.copy(flower1,0,0);
+     this.copy(flower2,100,0);
+     this.copy(flower3,200,0);
+     this.copy(flower1,300,0);
+     this.copy(flower2,400,0);   
+     this.copy(flower3,0,100);
+     this.copy(flower1,100,100);
+     this.copy(flower2,200,100);
+     this.copy(flower3,300,100);
+     this.copy(flower1,400,100);
+     this.copy(flower2,0,200);
+     this.copy(flower3,100,200);
+     this.copy(flower1,200,200);
+     this.copy(flower2,300,200);
+     this.copy(flower3,400,200);
+     this.mirrorVertical();
+     this.write("collage.jpg");
+   }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
