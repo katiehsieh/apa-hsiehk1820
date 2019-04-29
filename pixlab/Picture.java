@@ -205,7 +205,8 @@ public class Picture extends SimplePicture
     Pixel rightPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
+    
+    for (int row = 0; row < pixels.length-1; row++)
     {
       for (int col = 0; 
            col < pixels[0].length-1; col++)
@@ -216,8 +217,16 @@ public class Picture extends SimplePicture
         if (leftPixel.colorDistance(rightColor) > 
             edgeDist)
           leftPixel.setColor(Color.BLACK);
-        else
-          leftPixel.setColor(Color.WHITE);
+        else {
+          // check pixel below
+          rightPixel = pixels[row+1][col];
+          rightColor = rightPixel.getColor();
+          if (leftPixel.colorDistance(rightColor) > 
+              edgeDist)
+            leftPixel.setColor(Color.BLACK);
+          else
+            leftPixel.setColor(Color.WHITE);
+        }
       }
     }
   }
@@ -478,6 +487,38 @@ public class Picture extends SimplePicture
      this.mirrorVertical();
      this.write("collage.jpg");
    }
+   
+   /** Method to show large changes in color 
+    * @param edgeDist the distance for finding edges
+    */
+  public void edgeDetection2(int edgeDist)
+  {
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    
+    for (int row = 0; row < pixels.length-1; row++)
+    {
+      for (int col = 0; 
+           col < pixels[0].length-1; col++)
+      {
+        leftPixel = pixels[row][col];
+        // check pixel right
+        rightPixel = pixels[row][col+1];
+        if (Math.abs(leftPixel.getAverage() - rightPixel.getAverage()) > edgeDist)
+          leftPixel.setColor(Color.BLACK);
+        else {
+          // check pixel below
+          rightPixel = pixels[row+1][col];
+          if (Math.abs(leftPixel.getAverage() - rightPixel.getAverage()) > 
+              edgeDist)
+            leftPixel.setColor(Color.BLACK);
+          else
+            leftPixel.setColor(Color.WHITE);
+        }
+      }
+    }
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
