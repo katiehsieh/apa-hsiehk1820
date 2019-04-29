@@ -538,10 +538,12 @@ public class Picture extends SimplePicture
         
         for (int r = -1; r < 2; r++) {
           for (int c = -1; c < 2; c++) {
-            if (row + r >= 0 && col + c >= 0) {
-              redSum += pixels[row + r][col + c].getRed();
-              greenSum += pixels[row + r][col + c].getGreen();
-              blueSum += pixels[row + r][col + c].getBlue();
+            int a = row + r;
+            int b = col + c;
+            if (a >= 0 && a < pixels.length && b >= 0 && b < pixels[0].length) {
+              redSum += pixels[a][b].getRed();
+              greenSum += pixels[a][b].getGreen();
+              blueSum += pixels[a][b].getBlue();
               count++;
             }
           }
