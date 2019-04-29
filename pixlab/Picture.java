@@ -520,6 +520,44 @@ public class Picture extends SimplePicture
     }
   }
   
+  /** Method to blur an image within specified rectangle */
+  public void blur(int x, int y, int w, int h)
+  {
+    Pixel pixel = null;
+    Pixel[][] pixels = this.getPixels2D();
+    for (int row = x; row < x + w; row++)
+    {
+      for (int col = y; col < y + h; col++)
+      {
+        pixel = pixels[row][col];
+        
+        int redSum = 0;
+        int greenSum = 0;
+        int blueSum = 0;
+        int count = 0;
+        
+        for (int r = -1; r < 2; r++) {
+          for (int c = -1; c < 2; c++) {
+            if (row + r >= 0 && col + c >= 0) {
+              redSum += pixels[row + r][col + c].getRed();
+              greenSum += pixels[row + r][col + c].getGreen();
+              blueSum += pixels[row + r][col + c].getBlue();
+              count++;
+            }
+          }
+        }
+        
+        int redAvg = redSum / count;
+        int greenAvg = greenSum / count;
+        int blueAvg = blueSum / count;
+        
+        pixel.setRed(redAvg);
+        pixel.setGreen(greenAvg);
+        pixel.setBlue(blueAvg);
+       }
+     }
+   }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */

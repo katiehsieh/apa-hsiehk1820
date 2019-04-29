@@ -160,10 +160,21 @@ public class PictureTester
     swan.explore();
   }
   
+  /** Method to test blur */
+  public static void testBlur(int x, int y, int w, int h, int n)
+  {
+     Picture redMoto = new Picture("redMotorcycle.jpg");
+     for (int i = 0; i<n; i++){
+        redMoto.blur(x,y,w,h);
+      }
+      redMoto.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
   {
+    testBlur(180,160,25,25,10);
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
