@@ -71,28 +71,23 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     //graphToBack.setColor(Color.BLACK);
     //graphToBack.fillRect(0,0,800,600);
 
+    //add code to move Ship, Alien, etc.
     if(keys[0] == true)
     {
       ship.move("LEFT");
-      ship.draw(graphToBack);
     }
     if(keys[1] == true)
     {
       ship.move("RIGHT");
-      ship.draw(graphToBack);
     }
     if(keys[2] == true)
     {
       ship.move("UP");
-      ship.draw(graphToBack);
     }
     if(keys[3] == true)
     {
       ship.move("DOWN");
-      ship.draw(graphToBack);
     }
-
-    //add code to move Ship, Alien, etc.
     
     //add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
     
