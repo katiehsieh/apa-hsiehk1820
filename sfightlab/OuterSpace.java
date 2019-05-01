@@ -17,14 +17,9 @@ import java.util.ArrayList;
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
   private Ship ship;
-  private Alien alienOne;
-  private Alien alienTwo;
-
-  /* uncomment once you are ready for this part
-   *
-   private AlienHorde horde;
-   private Bullets shots;
-  */
+  
+  private AlienHorde horde;
+  private Bullets shots;
 
   private boolean[] keys;
   private BufferedImage back;
@@ -37,10 +32,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
     //instantiate other instance variables
     //Ship, Alien
-    ship = new Ship(100,100,50,50,1);
-    alienOne = new Alien(50,100, 30, 30, 1);
-    alienTwo = new Alien(50, 150, 30, 30, 1);
-
+    ship = new Ship(400,500,50,50,1);
+    horde = new AlienHorde(10);
+    shots = new Bullets();
+    
     this.addKeyListener(this);
     new Thread(this).start();
 
@@ -67,33 +62,54 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     Graphics graphToBack = back.createGraphics();
     graphToBack.setColor(Color.BLUE);
     graphToBack.drawString("StarFighter ", 25, 50 );
-    //graphToBack.setColor(Color.BLACK);
-    //graphToBack.fillRect(0,0,800,600);
+    graphToBack.setColor(Color.BLACK);
+    graphToBack.fillRect(0,0,800,600);
     ship.draw(graphToBack);
-    alienOne.draw(graphToBack);
-    alienTwo.draw(graphToBack);
+    horde.drawEmAll(graphToBack);
+    shots.drawEmAll(graphToBack);
 
     //add code to move Ship, Alien, etc.
-    if(keys[0] == true)
-    {
-      ship.move("LEFT");
+    shots.moveEmAll();
+    shots.cleanEmUp();
+    
+    if (horde.getGame()) {
+      horde.moveEmAll();
+    
+      if(keys[0] == true)
+      {
+        ship.move("LEFT");
+      }
+      if(keys[1] == true)
+      {
+        ship.move("RIGHT");
+      }
+      if(keys[2] == true)
+      {
+        ship.move("UP");
+      }
+      if(keys[3] == true)
+      {
+        ship.move("DOWN");
+      }
+      if(keys[4] == true) {
+        //shoot ammo
+        if (shots.getSize() < 11) {
+          shots.add(new Ammo(ship.getXMid(), ship.getY(),1));
+        }
+        keys[4] = false;
+      }
     }
-    if(keys[1] == true)
-    {
-      ship.move("RIGHT");
+    else if (horde.getSize() > 0) {
+      graphToBack.setColor(Color.BLUE);
+      graphToBack.drawString("Game Over ", 50, 50 );
     }
-    if(keys[2] == true)
-    {
-      ship.move("UP");
-    }
-    if(keys[3] == true)
-    {
-      ship.move("DOWN");
+    else {
+      graphToBack.setColor(Color.BLUE);
+      graphToBack.drawString("You Win! ", 50, 50 );
     }
     
     //add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
-    
-    
+    horde.removeDeadOnes(shots.getList());
     twoDGraph.drawImage(back, null, 0, 0);
   }
 

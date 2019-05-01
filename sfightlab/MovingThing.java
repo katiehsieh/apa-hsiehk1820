@@ -81,6 +81,18 @@ public abstract class MovingThing implements Moveable
   {
     return height;
   }
+  
+  public int getXR() {
+    return xPos + width;
+  }
+  
+  public int getYD() {
+    return yPos + height;
+  }
+  
+  public int getXMid() {
+    return xPos + (width/2);
+  }
 
   public abstract void move(String direction);
   public abstract void draw(Graphics window);
