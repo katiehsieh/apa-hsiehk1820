@@ -1,7 +1,7 @@
-//Name - Katie Hsieh
-//Date - 5-3-19
-//Class - 4
-//Lab  - Blackjack
+//Name - 
+//Date - 
+//Class - 
+//Lab  - 
 
 public class BlackJackCard extends Card
 {
