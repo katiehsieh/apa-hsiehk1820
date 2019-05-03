@@ -1,7 +1,7 @@
-//Name -
-//Date -
-//Class -
-//Lab  - 
+//Name - Katie Hsieh
+//Date - 5-3-19
+//Class - 4
+//Lab  - Blackjack
 
 
 public abstract class Card
@@ -13,30 +13,44 @@ public abstract class Card
   private int face;
 
   //constructors
-
-
-
+  public Card() {
+    face = 0;
+    suit = "";
+  }
+  
+  public Card(int f, String s) {
+    face = f;
+    suit = s;
+  }
+  
   // modifiers
-
-
- 
-
+  public void setSuit(String s) {
+    suit = s;
+  }
+  
+  public void setFace(int f) {
+    face = f;
+  }
+  
   //accessors
-
-
-
-
+  public String getSuit() {
+    return suit;
+  }
+  
+  public int getFace() {
+    return face;
+  }
 
   public abstract int getValue();
 
   public boolean equals(Object obj)
   {
-
-
-
-    return false;
+    Card other = (Card)obj;
+    return suit.equals(other.getSuit()) && face == other.getFace();
   }
 
   //toString
-        
+  public String toString() {
+    return FACES[face] + " of " + getSuit() + " | value = " + getValue();
+  }
 }
