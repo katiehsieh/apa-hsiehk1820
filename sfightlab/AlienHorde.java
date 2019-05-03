@@ -20,9 +20,9 @@ public class AlienHorde
     game = true;
     aliens = new ArrayList<Alien>();
     for (int i = 0; i < size; i++) {
-      add(new Alien((75 * i) + 50, 25, 30, 30, 1));
+      add(new Alien((75 * i) + 50, 20, 30, 30, 1));
       add(new Alien((75 * i) + 50, 100, 30, 30, 1));
-      add(new Alien((75 * i) + 50, 175, 30, 30, 1));
+      add(new Alien((75 * i) + 50, 180, 30, 30, 1));
     }
   }
 
@@ -41,13 +41,12 @@ public class AlienHorde
   public void moveEmAll()
   {
     for (Alien item : aliens) {
-      if (item.getYD() < 575) {
-        if (item.getXR() < 800) {
-          item.move("RIGHT");
+      if (item.getYD() < 570) {
+        if (item.getXR() > 800 || item.getXR() < 0) {
+          item.setY(item.getY() + 40);
+          item.setSpeed(item.getSpeed() * -1);
         }
-        else {
-          item.setPos(0, item.getY() + 75);
-        }
+        item.move("RIGHT");
       }
       else {
         game = false;
