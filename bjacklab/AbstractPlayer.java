@@ -11,40 +11,39 @@ public abstract class AbstractPlayer implements Playerable
   private int winCount;
 
   //constructors
-
-  public  void addCardToHand( Card temp )
+  public AbstractPlayer() {
+    hand = new ArrayList<Card>();
+    winCount = 0;
+  }
+  
+  public void addCardToHand( Card temp )
   {
-
-
+    hand.add(temp);
   }
 
-  public  void resetHand( )
+  public void resetHand( )
   {
-
-
+    hand.clear();
   }
 
-  public  void setWinCount( int numwins )
+  public void setWinCount( int numwins )
   {
-
-
+    winCount = numwins;
   }
 
-  public int getWinCount() { return 0; }
+  public int getWinCount() { return winCount; }
 
-  public int getHandSize() { return 0; }
+  public int getHandSize() { return hand.size(); }
 
   public int getHandValue()
   {
     //great example of polymorphism
     int total=0;
-
-
-
-
-
-
-
+    
+    for (Card c : hand) {
+      total += c.getValue();
+    }
+    
     return total;
   }
 
