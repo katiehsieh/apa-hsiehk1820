@@ -12,6 +12,6 @@ public class Player extends AbstractPlayer {
   }
   
   public boolean hit() {
-    return false;
+    return getHandValue() < 21;
   }
 }

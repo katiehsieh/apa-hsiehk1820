@@ -30,6 +30,10 @@ public abstract class AbstractPlayer implements Playerable
   {
     winCount = numwins;
   }
+  
+  public void addWinCount() {
+    winCount++;
+  }
 
   public int getWinCount() { return winCount; }
 
@@ -46,9 +50,14 @@ public abstract class AbstractPlayer implements Playerable
     
     return total;
   }
+  
+  public ArrayList<Card> getHand() {
+    return hand;
+  }
 
   public String toString()
   {
-    return "hand = " + hand.toString() + " \n-  # wins " + winCount;
+    //return "hand = " + hand.toString() + " \n-  # wins " + winCount;
+    return "hand = " + hand.toString() + " - " + getHandValue();
   }
 }

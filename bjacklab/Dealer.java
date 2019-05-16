@@ -20,6 +20,6 @@ public class Dealer extends AbstractPlayer {
   }
   
   public boolean hit() {
-    return false;
+    return getHandValue() < 16;
   }
 }
